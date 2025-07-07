@@ -37,7 +37,6 @@ export default function Home() {
     window.location.assign(`${path}?${searchParams.toString()}`)
 }
 
-
   return (
     <main className="flex min-h-screen flex-col justify-start items-center">
       <div className="flex flex-row  mt-3">
