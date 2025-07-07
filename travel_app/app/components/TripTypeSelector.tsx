@@ -8,36 +8,33 @@ interface TripTypeSelectorProps {
 }
 
 const TripTypeSelector: React.FC<TripTypeSelectorProps> = ({ tripTypeToggle, setTripTypeToggle }) => {
+  const selectedClasses = "bg-blue-600 text-white";
+  const deselectedClasses = "bg-gray-200 text-gray-700 hover:bg-gray-300";
+
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-lg shadow-md bg-white mb-6">
-      <span className="flex items-center">
-        <input
-          type="radio"
-          value="R"
-          name="trip"
-          id="return"
-          className="form-radio h-5 w-5 text-blue-600"
-          checked={tripTypeToggle}
-          onChange={() => setTripTypeToggle(true)}
-        />
-        <label htmlFor="return" className="ml-2 text-gray-700 font-medium">
-          Return
-        </label>
-      </span>
-      <span className="flex items-center">
-        <input
-          type="radio"
-          value="O"
-          name="trip"
-          id="one-way"
-          className="form-radio h-5 w-5 text-blue-600"
-          checked={!tripTypeToggle}
-          onChange={() => setTripTypeToggle(false)}
-        />
-        <label htmlFor="one-way" className="ml-2 text-gray-700 font-medium">
-          One-way
-        </label>
-      </span>
+    <div className="flex items-center justify-center rounded-lg shadow-md bg-white p-1 space-x-1 mb-6">
+      <button
+        type="button"
+        id="return-btn"
+        className={`flex-1 sm:flex-initial py-2 px-4 sm:px-6 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-60 transition-colors duration-150 ease-in-out ${
+          tripTypeToggle ? selectedClasses : deselectedClasses
+        }`}
+        onClick={() => setTripTypeToggle(true)}
+        aria-pressed={tripTypeToggle}
+      >
+        Return
+      </button>
+      <button
+        type="button"
+        id="one-way-btn"
+        className={`flex-1 sm:flex-initial py-2 px-4 sm:px-6 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-60 transition-colors duration-150 ease-in-out ${
+          !tripTypeToggle ? selectedClasses : deselectedClasses
+        }`}
+        onClick={() => setTripTypeToggle(false)}
+        aria-pressed={!tripTypeToggle}
+      >
+        One-way
+      </button>
     </div>
   );
 };
